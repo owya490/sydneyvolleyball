@@ -1,0 +1,21 @@
+{
+  "name": "sydney-volleyball",
+  "version": "1.0.0",
+  "description": "Sydney Volleyball — Interactive map and directory of indoor, beach, social, junior, and competitive volleyball clubs across Greater Sydney. Powered by SPORTSHUB.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/build.mjs && npx --yes serve dist -l 3000",
+    "verify": "node scripts/verify.mjs"
+  },
+  "keywords": [
+    "sydney volleyball",
+    "volleyball clubs sydney",
+    "indoor volleyball sydney",
+    "beach volleyball sydney",
+    "social volleyball sydney",
+    "sydney volleyball league"
+  ],
+  "license": "MIT"
+}
