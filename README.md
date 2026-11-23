@@ -1,48 +1,36 @@
 # SydneyVolleyball — powered by SPORTSHUB
 
-Interactive dark-mode volleyball discovery platform for Greater Sydney (`https://sydneyvolleyball.com`).
+Minimalist dark-mode volleyball discovery platform for Greater Sydney (`https://sydneyvolleyball.com`).
 
 ## Features
 
-- **Free Interactive Dark-Mode Map**: Powered by [Leaflet](https://leafletjs.com/) + free Esri Dark Gray Canvas, OpenStreetMap Street, and Esri World Imagery Satellite layers — **\$0 forever**, zero API keys, zero Google Maps billing, with a Dark / Street / Satellite switcher and deep links to Google Maps directions on every club.
-- **Suburb, Postcode & Radius Search**: Instant zero-cost client-side distance search across 100+ Greater Sydney suburbs & postcodes (e.g., `Carlingford 2118`, `Bondi Beach 2026`, `Parramatta 2150`, `Manly 2095`), browser geolocation ("Near me"), and free OpenStreetMap Nominatim fallback for any NSW street address.
-- **Opportunities to Play Filtering**: Filter by Indoor, Beach, Social, Competitive (SVL), Juniors, Academy, University, and Mixed — synced live with the map pins, distance radius circle, and shareable URL parameters.
-- **Pre-Rendered Programmatic SEO Architecture**:
-  - Zero-framework static HTML + Vanilla CSS + Vanilla JS for instant First Contentful Paint and 100/100 Core Web Vitals.
-  - **41 indexable static pages** generated from a single source of truth (`src/data/clubs.json`):
-    - `/` — Main interactive Sydney map & full pre-rendered 28-club directory
-    - `/clubs/<slug>/` — 28 dedicated club profile pages with venue map & 3 nearest clubs
-    - `/regions/<slug>/` — 8 regional hub pages (North Shore & Ryde, Inner West & Olympic Park, Eastern Suburbs, Northern Beaches, Hills District, Western Sydney, CBD & City South, South & South West)
-    - `/types/<slug>/` — 4 format hub pages (Indoor, Beach, Social, Junior Volleyball in Sydney)
-  - Full JSON-LD `@graph` (`WebSite` + `SearchAction`, `Organization`, `ItemList`, `SportsClub` + `PostalAddress` + `GeoCoordinates`, `FAQPage`, `BreadcrumbList`).
-  - Australian local SEO (`lang="en-AU"`, `hreflang="en-AU"`, `geo.region="AU-NSW"`), `sitemap.xml`, `robots.txt`, `llms.txt`, `site.webmanifest`, and generated 1200×630 Open Graph preview card (`og-image.png`).
+- **Dark-Mode Interactive Map (\$0 Forever)**: Powered by [Leaflet](https://leafletjs.com/) + free Esri Dark Gray Canvas tiles (zero API keys, zero Google Maps billing), with distinct Court Gold (Indoor) and Pacific Sky (Beach) markers and direct Google Maps links.
+- **Simple Slide-Over Filter Drawer**: Clean `Filter` button opens a right-side drawer on desktop and a smooth bottom sheet on mobile to filter by Court Surface (`All / Indoor / Beach`), Opportunities to Play (`Social`, `Competitive (SVL)`, `Juniors`, `Academy`, `University`, `Mixed`), Sydney Region, or Club/Suburb name.
+- **Single-Page SEO Architecture**:
+  - Zero-framework static HTML + Vanilla CSS + Vanilla JS for instant load and 100/100 Core Web Vitals.
+  - All 28 Sydney volleyball clubs, addresses, descriptions, sessions, and FAQs are **pre-rendered directly in raw HTML** using semantic `<article>`, `<details>`, `<address>`, and Microdata (`SportsClub`, `PostalAddress`) so Google indexes everything without needing JS execution.
+  - Complete JSON-LD `@graph` (`WebSite`, `Organization`, `CollectionPage`, `ItemList` of 28 `SportsClub` entities with `GeoCoordinates`, and `FAQPage`).
+  - Australian regional SEO (`lang="en-AU"`, `hreflang="en-AU"`, `geo.region="AU-NSW"`), `sitemap.xml`, `robots.txt`, `llms.txt`, `site.webmanifest`, and 1200×630 Open Graph preview image (`og-image.png`).
 
 ## Local Development
 
 ```bash
-# Build all static pages into dist/
+# Build static site into dist/
 npm run build
 
-# Verify SEO tags, JSON-LD, Sydney coordinates, and internal links
+# Verify SEO tags, JSON-LD, Sydney coordinates, and pre-rendered clubs
 npm run verify
 
-# Build and serve locally at http://localhost:3000
+# Build and serve locally on port 3000
 npm run dev
 ```
 
 ## Updating Club Data
 
-All clubs live in `src/data/clubs.json`. Add or update an entry, then run:
-
-```bash
-npm run build && npm run verify
-```
-
-Every page — homepage directory, map pins, club profile page, regional hub, format hub, `sitemap.xml`, and `llms.txt` — updates automatically.
+Edit `src/data/clubs.json` and run `npm run build && npm run verify`.
 
 ## Deploying to `sydneyvolleyball.com`
 
-Ready for one-click static deployment on **Cloudflare Pages**, **Vercel** (`vercel.json` included), **Netlify** (`netlify.toml` included), or **GitHub Pages**:
-- **Build command**: `npm run build`
-- **Output directory**: `dist`
-- Point `sydneyvolleyball.com` DNS (apex + `www` 301 redirect to apex) and submit `https://sydneyvolleyball.com/sitemap.xml` in Google Search Console.
+Connect this repository to **Vercel** (`vercel.json` included), **Cloudflare Pages**, or **Netlify** (`netlify.toml` included):
+- **Build command:** `npm run build`
+- **Output directory:** `dist`

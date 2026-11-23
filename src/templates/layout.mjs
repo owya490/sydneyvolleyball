@@ -1,5 +1,5 @@
 /**
- * Shared HTML layout, brand SVG lockup, SEO head tags, and club card renderer
+ * Minimalist single-page HTML layout, brand lockup, SEO head tags, and clean club rows
  * Domain: https://sydneyvolleyball.com | Powered by SPORTSHUB
  */
 
@@ -32,132 +32,96 @@ export function renderBrandLockup(site, { asLink = true } = {}) {
   return `<a href="/" class="brand-lockup" aria-label="SydneyVolleyball powered by SPORTSHUB — Home">${inner}</a>`;
 }
 
-export function renderClubRow(club, regionMap, { showLocateBtn = true } = {}) {
+export function renderClubRow(club, regionMap) {
   const region = regionMap.get(club.region);
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
     `${club.name}, ${club.address}`
   )}`;
   const surfaceClass = club.surface === 'Beach' ? 'surface-dot--beach' : 'surface-dot--indoor';
-  const detailsId = `club-details-${club.slug}`;
 
   const tagsHtml = club.opportunities
     .filter((o) => o !== club.surface)
-    .slice(0, 4)
     .map((opp) => `<span class="club-tag">${escapeHtml(opp)}</span>`)
     .join('');
 
   return `
     <article class="club-row" data-club-slug="${escapeHtml(club.slug)}" itemscope itemtype="https://schema.org/SportsClub">
       <meta itemprop="sport" content="Volleyball">
-      <div class="club-row-main">
-        <div class="club-row-info">
-          <div class="club-title-line">
-            <h2 class="club-name" itemprop="name">
-              <a href="/clubs/${escapeHtml(club.slug)}/">${escapeHtml(club.name)}</a>
-            </h2>
-            <span class="surface-dot ${surfaceClass}">${escapeHtml(club.surface)}</span>
+      <details class="club-accordion">
+        <summary class="club-row-main">
+          <div class="club-row-info">
+            <div class="club-title-line">
+              <h2 class="club-name" itemprop="name">${escapeHtml(club.name)}</h2>
+              <span class="surface-dot ${surfaceClass}">${escapeHtml(club.surface)}</span>
+            </div>
+
+            <div class="club-meta">
+              <address class="club-address" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                <span itemprop="streetAddress">${escapeHtml(club.address)}</span>
+                <meta itemprop="addressLocality" content="${escapeHtml(club.suburb)}">
+                <meta itemprop="addressRegion" content="NSW">
+                <meta itemprop="postalCode" content="${escapeHtml(club.postcode)}">
+                <meta itemprop="addressCountry" content="AU">
+              </address>
+              <span class="meta-sep" aria-hidden="true">·</span>
+              <a href="${mapsUrl}" target="_blank" rel="noopener noreferrer" class="maps-link" data-stop-toggle aria-label="Open ${escapeHtml(club.name)} in Google Maps">
+                Google Maps ↗
+              </a>
+            </div>
           </div>
 
-          <div class="club-meta">
-            <span class="club-distance" data-dist-badge hidden>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-              </svg>
-              <span data-dist-value></span>
-            </span>
-            <span class="meta-sep" data-dist-sep hidden aria-hidden="true">·</span>
-            <address class="club-address" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-              <span itemprop="streetAddress">${escapeHtml(club.address)}</span>
-              <meta itemprop="addressLocality" content="${escapeHtml(club.suburb)}">
-              <meta itemprop="addressRegion" content="NSW">
-              <meta itemprop="postalCode" content="${escapeHtml(club.postcode)}">
-              <meta itemprop="addressCountry" content="AU">
-            </address>
-            <a href="${mapsUrl}" target="_blank" rel="noopener noreferrer" class="maps-link" aria-label="Open ${escapeHtml(club.name)} in Google Maps">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                <polyline points="15 3 21 3 21 9"/>
-                <line x1="10" y1="14" x2="21" y2="3"/>
-              </svg>
-              Google Maps
-            </a>
-          </div>
-
-          <div class="club-tags">${tagsHtml}</div>
-        </div>
-
-        <div class="club-row-actions">
-          ${
-            club.hasDirectRegister
-              ? `<a href="${escapeHtml(club.registerUrl)}" target="_blank" rel="noopener noreferrer" class="btn-register" aria-label="Register with ${escapeHtml(club.name)}">Register</a>`
-              : `<a href="/clubs/${escapeHtml(club.slug)}/" class="btn-register btn-register--subtle">Details</a>`
-          }
-          <button
-            type="button"
-            class="accordion-toggle"
-            aria-expanded="false"
-            aria-controls="${detailsId}"
-            aria-label="Toggle details for ${escapeHtml(club.name)}"
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <span class="accordion-chevron" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="6 9 12 15 18 9"/>
             </svg>
-          </button>
-        </div>
-      </div>
+          </span>
+        </summary>
 
-      <div class="club-details" id="${detailsId}" hidden>
-        <div class="club-details-inner">
-          <p class="club-details-desc" itemprop="description">${escapeHtml(club.shortDescription)}</p>
-          <div class="club-details-grid">
-            <div>
-              <span class="detail-item-label">Venue</span>
-              <span class="detail-item-value">${escapeHtml(club.venue)}</span>
-            </div>
-            <div>
-              <span class="detail-item-label">Typical Sessions</span>
-              <span class="detail-item-value">${escapeHtml(club.schedule)}</span>
-            </div>
-            <div>
-              <span class="detail-item-label">Levels &amp; Region</span>
-              <span class="detail-item-value">${escapeHtml(club.levels.join(' · '))}${region ? ` (${escapeHtml(region.shortName)})` : ''}</span>
-            </div>
-          </div>
-          <div class="club-details-footer">
-            <div class="detail-action-group">
-              ${
-                showLocateBtn
-                  ? `<button type="button" class="btn-inline" data-locate-club="${escapeHtml(club.slug)}">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                        <circle cx="12" cy="10" r="3"/>
-                      </svg>
-                      Show on Map
-                    </button>`
-                  : ''
-              }
+        <div class="club-details">
+          <div class="club-details-inner">
+            <p class="club-details-desc" itemprop="description">${escapeHtml(club.shortDescription)}</p>
+
+            <div class="club-tags">${tagsHtml}</div>
+
+            <dl class="club-details-grid">
+              <div>
+                <dt class="detail-item-label">Venue</dt>
+                <dd class="detail-item-value">${escapeHtml(club.venue)}</dd>
+              </div>
+              <div>
+                <dt class="detail-item-label">Sessions</dt>
+                <dd class="detail-item-value">${escapeHtml(club.schedule)}</dd>
+              </div>
+              <div>
+                <dt class="detail-item-label">Area &amp; Levels</dt>
+                <dd class="detail-item-value">${region ? escapeHtml(region.name) : 'Greater Sydney'} · ${escapeHtml(club.levels.join(', '))}</dd>
+              </div>
+            </dl>
+
+            <div class="club-details-footer">
+              <button type="button" class="btn-inline" data-locate-club="${escapeHtml(club.slug)}">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                Show on Map
+              </button>
               <a href="${escapeHtml(club.website)}" target="_blank" rel="noopener noreferrer" class="btn-inline" itemprop="url">
                 Visit Club Website ↗
               </a>
             </div>
-            <a href="/clubs/${escapeHtml(club.slug)}/" class="profile-link">
-              Full Club Profile →
-            </a>
           </div>
         </div>
-      </div>
+      </details>
     </article>
   `;
 }
 
 export function renderPage({
   site,
-  regions,
-  types,
   title,
   description,
   canonicalPath = '/',
-  activeNav = '',
   includeLeaflet = true,
   scripts = [],
   jsonLd = null,
@@ -180,7 +144,7 @@ export function renderPage({
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="theme-color" content="#0A0C10">
 
-  <!-- Canonical & Australian Regional SEO -->
+  <!-- Canonical & Australian Local SEO -->
   <link rel="canonical" href="${escapeHtml(canonicalUrl)}">
   <link rel="alternate" hreflang="en-AU" href="${escapeHtml(canonicalUrl)}">
   <link rel="alternate" hreflang="x-default" href="${escapeHtml(canonicalUrl)}">
@@ -189,7 +153,7 @@ export function renderPage({
   <meta name="geo.position" content="-33.8688;151.2093">
   <meta name="ICBM" content="-33.8688, 151.2093">
 
-  <!-- Open Graph & Social Sharing -->
+  <!-- Open Graph & Social Cards -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="${escapeHtml(site.name)}">
   <meta property="og:locale" content="${escapeHtml(site.locale)}">
@@ -214,11 +178,12 @@ export function renderPage({
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 
   ${
     includeLeaflet
       ? `<link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="preconnect" href="https://server.arcgisonline.com" crossorigin>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">`
       : ''
   }
@@ -233,14 +198,7 @@ export function renderPage({
   <header class="site-header">
     <div class="container header-inner">
       ${renderBrandLockup(site)}
-      <nav class="header-nav" aria-label="Primary navigation">
-        <a href="/#directory" class="nav-link nav-link--desktop" ${activeNav === 'home' ? 'aria-current="page"' : ''}>Club Map</a>
-        <a href="/types/indoor-volleyball/" class="nav-link nav-link--desktop" ${activeNav === 'indoor-volleyball' ? 'aria-current="page"' : ''}>Indoor</a>
-        <a href="/types/beach-volleyball/" class="nav-link nav-link--desktop" ${activeNav === 'beach-volleyball' ? 'aria-current="page"' : ''}>Beach</a>
-        <a href="/types/social-volleyball/" class="nav-link nav-link--desktop" ${activeNav === 'social-volleyball' ? 'aria-current="page"' : ''}>Social</a>
-        <a href="/#regions" class="nav-link nav-link--desktop">Regions</a>
-        <button type="button" class="nav-cta" data-open-submit-modal>List a Club</button>
-      </nav>
+      <button type="button" class="nav-cta" data-open-submit-modal>List a Club</button>
     </div>
   </header>
 
@@ -249,57 +207,14 @@ export function renderPage({
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-about">
-          ${renderBrandLockup(site)}
-          <p>Sydney's dedicated volleyball discovery platform. Explore indoor courts, beach sand courts, social leagues, junior academies, and SVL clubs across Greater Sydney.</p>
-        </div>
-
-        <div class="footer-col">
-          <h3>Ways to Play</h3>
-          <ul class="footer-links">
-            ${types
-              .map(
-                (t) =>
-                  `<li><a href="/types/${escapeHtml(t.slug)}/">${escapeHtml(t.shortName)}</a></li>`
-              )
-              .join('')}
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h3>Sydney Regions</h3>
-          <ul class="footer-links">
-            ${regions
-              .slice(0, 5)
-              .map(
-                (r) =>
-                  `<li><a href="/regions/${escapeHtml(r.slug)}/">${escapeHtml(r.shortName)}</a></li>`
-              )
-              .join('')}
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h3>More Areas &amp; Info</h3>
-          <ul class="footer-links">
-            ${regions
-              .slice(5)
-              .map(
-                (r) =>
-                  `<li><a href="/regions/${escapeHtml(r.slug)}/">${escapeHtml(r.shortName)}</a></li>`
-              )
-              .join('')}
-            <li><a href="/#faq">Sydney Volleyball FAQ</a></li>
-            <li><a href="/sitemap.xml">Sitemap</a></li>
-          </ul>
-        </div>
+    <div class="container footer-minimal">
+      <div class="footer-brand">
+        ${renderBrandLockup(site)}
       </div>
-
-      <div class="footer-bottom">
-        <span>© ${new Date().getFullYear()} SydneyVolleyball · powered by SPORTSHUB · sydneyvolleyball.com</span>
-        <span>Map data © OpenStreetMap contributors · Free &amp; open club discovery for Sydney, NSW</span>
+      <div class="footer-meta">
+        <span>© ${new Date().getFullYear()} sydneyvolleyball.com · Sydney, NSW</span>
+        <span aria-hidden="true">·</span>
+        <button type="button" class="footer-text-btn" data-open-submit-modal>List a Club</button>
       </div>
     </div>
   </footer>
@@ -308,10 +223,10 @@ export function renderPage({
   <div class="modal-backdrop" id="submit-club-modal" role="dialog" aria-modal="true" aria-labelledby="submit-modal-title" hidden>
     <div class="modal-dialog">
       <div class="modal-header">
-        <h2 id="submit-modal-title">List or Update a Sydney Club</h2>
-        <button type="button" class="modal-close" data-close-modal aria-label="Close modal">×</button>
+        <h2 id="submit-modal-title">List a Sydney Club</h2>
+        <button type="button" class="icon-close" data-close-modal aria-label="Close modal">×</button>
       </div>
-      <p class="modal-lead">Run an indoor, beach, social, or junior volleyball club in Greater Sydney? Submit your venue details for a free listing on sydneyvolleyball.com.</p>
+      <p class="modal-lead">Run an indoor, beach, social, or junior volleyball club in Sydney? Submit your details for a free listing on sydneyvolleyball.com.</p>
       <form id="submit-club-form">
         <div class="form-field">
           <label for="submit-club-name">Club Name *</label>
@@ -322,17 +237,17 @@ export function renderPage({
           <input type="text" id="submit-club-suburb" name="clubSuburb" class="text-input" placeholder="e.g. Sydney Olympic Park NSW 2127" required>
         </div>
         <div class="form-field">
-          <label for="submit-club-website">Website or Registration Link</label>
+          <label for="submit-club-website">Website or Social Link</label>
           <input type="url" id="submit-club-website" name="clubWebsite" class="text-input" placeholder="https://">
         </div>
         <div class="form-field">
           <label for="submit-club-notes">Programs &amp; Playing Nights</label>
           <textarea id="submit-club-notes" name="clubNotes" class="form-textarea" placeholder="Indoor / Beach, Social, Juniors, SVL, playing days..."></textarea>
         </div>
-        <button type="submit" class="btn-search">Submit Club Listing</button>
+        <button type="submit" class="btn-primary">Submit Club</button>
         <p class="modal-status" id="submit-club-status" role="status" hidden></p>
-        <p style="margin: 10px 0 0; font-size: 12.5px;">
-          <a id="submit-mailto-fallback" class="profile-link" href="mailto:hello@sydneyvolleyball.com" hidden>Send via email client →</a>
+        <p class="modal-mailto-wrap">
+          <a id="submit-mailto-fallback" class="inline-link" href="mailto:hello@sydneyvolleyball.com" hidden>Send via email client →</a>
         </p>
       </form>
     </div>

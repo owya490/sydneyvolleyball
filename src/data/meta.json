@@ -8,8 +8,8 @@
     "email": "hello@sydneyvolleyball.com",
     "locale": "en_AU",
     "lang": "en-AU",
-    "defaultTitle": "Sydney Volleyball — Find Volleyball Clubs, Courts & Leagues in Sydney",
-    "defaultDescription": "Discover every indoor, beach, social, junior, and competitive SVL volleyball club across Greater Sydney. Search by suburb, distance radius, and opportunities to play on Sydney's interactive volleyball map.",
+    "defaultTitle": "Sydney Volleyball — Clubs, Courts & Map Across Sydney",
+    "defaultDescription": "Find every indoor, beach, social, junior, and SVL volleyball club in Sydney. Explore our dark-mode map and directory of volleyball clubs across Sydney.",
     "sydneyCenter": {
       "lat": -33.855,
       "lng": 151.02,
@@ -17,8 +17,6 @@
     }
   },
   "opportunities": [
-    "Indoor",
-    "Beach",
     "Social",
     "Competitive (SVL)",
     "Juniors",
@@ -27,153 +25,39 @@
     "Mixed"
   ],
   "regions": [
-    {
-      "slug": "north-shore-ryde",
-      "name": "North Shore & Ryde",
-      "shortName": "North Shore & Ryde",
-      "suburbs": "West Ryde, North Ryde, Macquarie Park, Willoughby, Hornsby, Waitara, Chatswood",
-      "center": { "lat": -33.775, "lng": 151.125, "zoom": 12 },
-      "metaTitle": "North Shore & Ryde Volleyball Clubs | Sydney Volleyball",
-      "metaDescription": "Find indoor, social, junior, and SVL volleyball clubs across Sydney's North Shore and Ryde — including North Ryde, West Ryde, Willoughby, and Hornsby.",
-      "intro": "Home to one of Sydney's densest concentrations of indoor volleyball clubs, North Shore and Ryde feature university hubs at Macquarie Park, thriving junior academies in West Ryde, and competitive SVL and social programs across Willoughby and Hornsby."
-    },
-    {
-      "slug": "inner-west-olympic-park",
-      "name": "Inner West & Olympic Park",
-      "shortName": "Inner West & SOP",
-      "suburbs": "Sydney Olympic Park, Lidcombe, Strathfield, Burwood, Auburn, Concord",
-      "center": { "lat": -33.852, "lng": 151.068, "zoom": 13 },
-      "metaTitle": "Inner West & Sydney Olympic Park Volleyball Clubs | Sydney Volleyball",
-      "metaDescription": "Explore volleyball clubs and training academies at Sydney Olympic Park Sports Halls, Lidcombe, and across Sydney's Inner West. SVL, social, and junior programs.",
-      "intro": "Anchored by the multi-court Sydney Olympic Park Sports Halls — the spiritual home of the Sydney Volleyball League (SVL) — the Inner West and Olympic Park corridor hosts elite academies, youth development squads, and weekly adult sessions."
-    },
-    {
-      "slug": "cbd-city-south",
-      "name": "Sydney CBD & City South",
-      "shortName": "CBD & City South",
-      "suburbs": "Ultimo, Darlington, Alexandria, Camperdown, Moore Park, Surry Hills",
-      "center": { "lat": -33.892, "lng": 151.196, "zoom": 13 },
-      "metaTitle": "Sydney CBD & Inner City Volleyball Clubs | Sydney Volleyball",
-      "metaDescription": "Play indoor, social, university, and inclusive volleyball in Sydney CBD, Ultimo, Darlington, and Alexandria. Compare clubs, venues, and session times.",
-      "intro": "Central Sydney is packed with accessible evening and weekend volleyball across Sydney University, UTS in Ultimo, and Perry Park in Alexandria — ideal for students, CBD professionals, and inclusive community players."
-    },
-    {
-      "slug": "eastern-suburbs-beaches",
-      "name": "Eastern Suburbs & Beaches",
-      "shortName": "Eastern Suburbs",
-      "suburbs": "Bondi Beach, Coogee, Maroubra, Kensington, Randwick",
-      "center": { "lat": -33.918, "lng": 151.253, "zoom": 13 },
-      "metaTitle": "Eastern Suburbs & Beach Volleyball Clubs Sydney | Bondi, Coogee & Maroubra",
-      "metaDescription": "Discover beach and indoor volleyball clubs in Sydney's Eastern Suburbs — Bondi Beach, Coogee, Maroubra, and UNSW Kensington. Social play, coaching, and leagues.",
-      "intro": "Sydney's Eastern Suburbs unite iconic coastal beach volleyball courts at Bondi, Coogee, and Maroubra with premier indoor programs at UNSW Kensington and Heffron Centre."
-    },
-    {
-      "slug": "northern-beaches",
-      "name": "Northern Beaches",
-      "shortName": "Northern Beaches",
-      "suburbs": "Manly, Brookvale, Warriewood, Dee Why, Mona Vale",
-      "center": { "lat": -33.745, "lng": 151.285, "zoom": 12 },
-      "metaTitle": "Northern Beaches & Manly Volleyball Clubs | Sydney Volleyball",
-      "metaDescription": "Join beach and indoor volleyball clubs on Sydney's Northern Beaches, including Manly Beach (NBVA) and Warriewood (Manly Warringah Volleyball Association).",
-      "intro": "From year-round sand tournaments at Manly Beach with NBVA to multi-court indoor SVL and junior volleyball at Warriewood, the Northern Beaches boasts one of Australia's strongest volleyball communities."
-    },
-    {
-      "slug": "hills-district",
-      "name": "Hills District & North West",
-      "shortName": "Hills District",
-      "suburbs": "Baulkham Hills, Castle Hill, Carlingford, Kellyville, Rouse Hill, Parramatta",
-      "center": { "lat": -33.760, "lng": 150.995, "zoom": 12 },
-      "metaTitle": "Hills District & Baulkham Hills Volleyball Clubs | Sydney Volleyball",
-      "metaDescription": "Find junior, social, and competitive indoor volleyball clubs in Sydney's Hills District — Baulkham Hills, Castle Hill, Carlingford, and Kellyville.",
-      "intro": "Rapidly growing junior pathways and community indoor competitions make the Hills District and North West a prime hub for families, school-age athletes, and social players."
-    },
-    {
-      "slug": "western-sydney",
-      "name": "Western Sydney",
-      "shortName": "Western Sydney",
-      "suburbs": "Penrith, Cambridge Park, Mount Druitt, Blacktown, Parramatta",
-      "center": { "lat": -33.765, "lng": 150.775, "zoom": 11 },
-      "metaTitle": "Western Sydney Volleyball Clubs — Penrith, Blacktown & Mount Druitt",
-      "metaDescription": "Discover indoor volleyball clubs, academies, social comps, and junior rep squads across Western Sydney including Penrith, Blacktown, and Mount Druitt.",
-      "intro": "Western Sydney offers welcoming social leagues, fundamentals clinics, and competitive junior representative squads across Penrith Valley and Blacktown."
-    },
-    {
-      "slug": "south-sydney-south-west",
-      "name": "South Sydney, Shire & South West",
-      "shortName": "South & South West",
-      "suburbs": "Brighton-Le-Sands, Arncliffe, Riverwood, Sutherland, Bonnyrigg, Fairfield, Liverpool",
-      "center": { "lat": -33.945, "lng": 151.045, "zoom": 11 },
-      "metaTitle": "South Sydney, Sutherland Shire & South West Volleyball Clubs",
-      "metaDescription": "Find indoor and beach volleyball clubs across St George, Sutherland Shire, Bayside, and South West Sydney — Brighton-Le-Sands, Sutherland, Arncliffe, Riverwood, and Bonnyrigg.",
-      "intro": "Spanning bayside beach courts at Brighton-Le-Sands, thriving community indoor centres in Arncliffe, Riverwood, and Sutherland, and passionate clubs in Fairfield and Bonnyrigg."
-    }
-  ],
-  "types": [
-    {
-      "slug": "indoor-volleyball",
-      "name": "Indoor Volleyball in Sydney",
-      "shortName": "Indoor Volleyball",
-      "filterOpportunity": "Indoor",
-      "metaTitle": "Indoor Volleyball Clubs in Sydney — Courts, Social & SVL | Sydney Volleyball",
-      "metaDescription": "Complete directory of indoor volleyball clubs across Sydney. Find hardwood courts, social competitions, coaching clinics, and Sydney Volleyball League (SVL) teams near you.",
-      "intro": "Sydney has dozens of indoor volleyball clubs playing on multi-court sports halls from Sydney Olympic Park and North Ryde to Ultimo, Sutherland, Warriewood, and Penrith. Compare clubs offering social mixed games, beginner fundamentals, and Volleyball NSW Sydney Volleyball League (SVL) divisions."
-    },
-    {
-      "slug": "beach-volleyball",
-      "name": "Beach Volleyball in Sydney",
-      "shortName": "Beach Volleyball",
-      "filterOpportunity": "Beach",
-      "metaTitle": "Beach Volleyball Clubs & Courts in Sydney — Manly, Coogee, Bondi & Maroubra",
-      "metaDescription": "Find beach volleyball clubs, social games, coaching squads, and tournaments at Manly, Coogee, Bondi, Maroubra, and Brighton-Le-Sands in Sydney.",
-      "intro": "Play beach volleyball year-round on Sydney's world-famous coastline. Whether you are looking for casual sunset 4-a-side games at Coogee, structured training squads at Maroubra, or competitive 2-on-2 pairs tournaments at Manly and Bondi, browse every beach club below."
-    },
-    {
-      "slug": "social-volleyball",
-      "name": "Social Volleyball in Sydney",
-      "shortName": "Social Volleyball",
-      "filterOpportunity": "Social",
-      "metaTitle": "Social Volleyball in Sydney — Beginner Friendly & Mixed Leagues",
-      "metaDescription": "Looking for social volleyball in Sydney? Discover beginner-friendly mixed leagues, casual drop-in sessions, and welcoming community clubs across Greater Sydney.",
-      "intro": "New to volleyball or looking for an easy-going weekly hit? These Sydney volleyball clubs run welcoming social nights, casual drop-in play, and graded mixed competitions where you can register solo or bring a team."
-    },
-    {
-      "slug": "junior-volleyball",
-      "name": "Junior Volleyball in Sydney",
-      "shortName": "Junior Volleyball",
-      "filterOpportunity": "Juniors",
-      "metaTitle": "Junior Volleyball Clubs & Academies in Sydney (Ages 8–18 & YSVL)",
-      "metaDescription": "Find junior volleyball classes, holiday camps, development academies, and Youth Sydney Volleyball League (YSVL) clubs for kids and teens across Sydney.",
-      "intro": "From Spikeroos and beginner term classes for ages 8–12 through to Under-15, Under-17, and Under-19 Youth Sydney Volleyball League (YSVL) representative squads, discover Sydney's dedicated junior volleyball clubs and academies."
-    }
+    { "slug": "north-shore-ryde", "name": "North Shore & Ryde" },
+    { "slug": "inner-west-olympic-park", "name": "Inner West & Olympic Park" },
+    { "slug": "cbd-city-south", "name": "Sydney CBD & City South" },
+    { "slug": "eastern-suburbs-beaches", "name": "Eastern Suburbs & Beaches" },
+    { "slug": "northern-beaches", "name": "Northern Beaches" },
+    { "slug": "hills-district", "name": "Hills District & North West" },
+    { "slug": "western-sydney", "name": "Western Sydney" },
+    { "slug": "south-sydney-south-west", "name": "South Sydney, Shire & South West" }
   ],
   "faqs": [
     {
       "question": "Where can I play volleyball in Sydney?",
-      "answer": "Volleyball is played across every region of Greater Sydney, both indoors and on the beach. Major indoor hubs include Sydney Olympic Park Sports Halls, North Ryde and West Ryde, Sydney CBD universities (USYD, UTS, UNSW), Willoughby, Baulkham Hills, Warriewood, Sutherland, Riverwood, and Penrith. Outdoor beach volleyball clubs run year-round at Manly, Coogee, Maroubra, Bondi, and Brighton-Le-Sands."
+      "answer": "Volleyball is played year-round across Greater Sydney, both indoors and on the beach. Key indoor hubs include Sydney Olympic Park Sports Halls, North Ryde and West Ryde, Sydney CBD universities (USYD, UTS, UNSW), Willoughby, Baulkham Hills, Warriewood, Sutherland, Riverwood, and Penrith. Organised beach volleyball runs at Manly, Coogee, Maroubra, Bondi, and Brighton-Le-Sands."
     },
     {
       "question": "How do I join a social volleyball club in Sydney as a beginner?",
-      "answer": "Filter the Sydney Volleyball directory by the 'Social' opportunity tag and enter your suburb or postcode to find nearby clubs. Most social clubs welcome solo players without a team, offer graded divisions or rotating social games, and provide introductory skills sessions before you commit to a full season."
+      "answer": "Open the Filter drawer and select 'Social' to view beginner-friendly clubs across Sydney. Most social clubs welcome individual players without a pre-formed team, run graded mixed nights, and offer casual drop-in or introductory skills sessions."
     },
     {
       "question": "What is the Sydney Volleyball League (SVL)?",
-      "answer": "The Sydney Volleyball League (SVL) is Volleyball NSW's flagship multi-week indoor club competition across Greater Sydney, featuring Men's and Women's divisions from Premier/Honours through to Division 3, alongside the Youth Sydney Volleyball League (YSVL) for junior athletes under 19. Clubs marked 'Competitive (SVL)' in our directory field SVL teams and hold seasonal trials."
+      "answer": "The Sydney Volleyball League (SVL) is Volleyball NSW's premier multi-week indoor competition across Greater Sydney, spanning Men's and Women's Honours through Division 3 alongside the Youth Sydney Volleyball League (YSVL) for under-19 athletes. Filter by 'Competitive (SVL)' to find affiliated clubs."
     },
     {
       "question": "Where are the best beach volleyball clubs in Sydney?",
-      "answer": "Sydney's major organised beach volleyball clubs are Northern Beaches Volleyball Association (NBVA) at Manly Beach, Coogee Beach Volleyball Association (CBVA) at Coogee Beach, Maroubra Beach Volleyball (Beachvolleyball.com.au) at South Maroubra, Bondi Beach Volleyball Club at North Bondi, and Brighton Beach Volleyball Association at Brighton-Le-Sands."
+      "answer": "Sydney's main beach volleyball clubs are Northern Beaches Volleyball Association (NBVA) at Manly Beach, Coogee Beach Volleyball Association (CBVA) at Coogee Beach, Maroubra Beach Volleyball at South Maroubra, Bondi Beach Volleyball Club at North Bondi, and Brighton Beach Volleyball Association at Brighton-Le-Sands."
     },
     {
-      "question": "Are there junior volleyball clubs and academies in Sydney for kids and teens?",
-      "answer": "Yes. Clubs and academies such as Obsidian Volleyball Academy (West Ryde, Baulkham Hills, Olympic Park), Sydney United Volleyball Club, ProVolley Academy, Hills Dragons Volleyball Association, Sydney Thunder, Manly Warringah, Endeavour, Blacktown Volleyball Academy, and Western Sydney Volleyball run structured term classes, school holiday camps, and YSVL representative teams for ages 8 to 18."
+      "question": "Are there junior volleyball clubs and academies in Sydney?",
+      "answer": "Yes. Clubs and academies including Obsidian Volleyball Academy, Sydney United Volleyball Club, ProVolley Academy, Hills Dragons, Sydney Thunder, Manly Warringah, Endeavour, Blacktown Volleyball Academy, and Western Sydney Volleyball offer weekly term classes, holiday camps, and YSVL representative teams for ages 8–18."
     },
     {
-      "question": "Do I need to be a university student to join USYD, UNSW, UTS, or Macquarie volleyball clubs?",
-      "answer": "No — while Sydney University, UNSW, UTS, and Macquarie University volleyball clubs are based on campus and attract plenty of students, all four generally welcome community (non-student) members into their social sessions, training squads, and competitive SVL teams."
-    },
-    {
-      "question": "How can I add or update a Sydney volleyball club on sydneyvolleyball.com?",
-      "answer": "Use the 'List a Club' button in the top navigation bar to submit a new Sydney indoor, beach, social, or junior volleyball club, or to request updated venue addresses, training times, and registration links. Listings on Sydney Volleyball powered by SPORTSHUB are free for Sydney clubs."
+      "question": "Can non-students join USYD, UNSW, UTS, or Macquarie volleyball clubs?",
+      "answer": "Yes. Sydney University, UNSW, UTS, and Macquarie University volleyball clubs are based on campus and generally welcome community (non-student) members into their social nights, training sessions, and SVL teams."
     }
   ]
 }
