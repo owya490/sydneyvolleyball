@@ -62,7 +62,7 @@ function clubSchemaEntity(club) {
 fs.rmSync(DIST, { recursive: true, force: true });
 fs.mkdirSync(path.join(DIST, 'assets'), { recursive: true });
 
-for (const file of ['styles.css', 'app.js', 'favicon.svg']) {
+for (const file of ['styles.css', 'app.js', 'favicon.svg', 'logo.png']) {
   fs.copyFileSync(path.join(SRC, 'assets', file), path.join(DIST, 'assets', file));
 }
 
@@ -97,7 +97,7 @@ const homeJsonLd = {
       name: 'Sydney Volleyball',
       legalName: 'SydneyVolleyball powered by SPORTSHUB',
       url: `${site.url}/`,
-      logo: `${site.url}/assets/favicon.svg`,
+      logo: `${site.url}/assets/logo.png`,
       email: site.email,
       areaServed: {
         '@type': 'City',
@@ -384,6 +384,7 @@ const manifestJson = JSON.stringify(
     theme_color: '#0A0C10',
     icons: [
       { src: '/assets/favicon.svg', sizes: 'any', type: 'image/svg+xml' },
+      { src: '/assets/logo.png', sizes: '384x384', type: 'image/png' },
       { src: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
     ]
   },

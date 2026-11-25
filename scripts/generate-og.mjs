@@ -7,7 +7,10 @@ import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
+import { fileURLToPath } from 'node:url';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const LOGO_PATH = path.resolve(__dirname, '../src/assets/logo.png');
 const CHROME_CANDIDATES = ['/usr/bin/google-chrome', '/usr/bin/chromium', '/usr/bin/chromium-browser'];
 
 function findChrome() {
@@ -21,6 +24,7 @@ export function generateSocialImages(distDir) {
     return;
   }
 
+  const logoDataUri = `data:image/png;base64,${fs.readFileSync(LOGO_PATH).toString('base64')}`;
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'sv-og-'));
 
   const ogHtml = `<!DOCTYPE html>
@@ -154,12 +158,7 @@ export function generateSocialImages(distDir) {
 
   <div class="top-brand">
     <div class="mark">
-      <svg width="28" height="28" viewBox="0 0 64 64" fill="none">
-        <circle cx="32" cy="32" r="24" stroke="#E6A93C" stroke-width="4.2"/>
-        <path d="M12.5 19.5C22.5 22 31.2 29 37.5 41C40 45.8 41.2 51 40.8 55.2" stroke="#E6A93C" stroke-width="3.6" stroke-linecap="round"/>
-        <path d="M51.5 19.5C41.5 21.2 32.5 26 25.8 34.8C21.5 40.4 18.8 46.8 18 52.2" stroke="#E6A93C" stroke-width="3.6" stroke-linecap="round"/>
-        <path d="M20.5 11.5C28.8 15.5 36.8 17.2 45.5 16.5C49 16.2 52 15.5 54.2 14.5" stroke="#E6A93C" stroke-width="3.6" stroke-linecap="round"/>
-      </svg>
+      <img src="${logoDataUri}" width="36" height="36" alt="" style="display:block;object-fit:contain;">
     </div>
     <div>
       <div class="wordmark">Sydney<span>Volleyball</span></div>
@@ -185,12 +184,7 @@ export function generateSocialImages(distDir) {
   body { width: 180px; height: 180px; background: #0B0E13; display: grid; place-items: center; }
 </style></head>
 <body>
-  <svg width="116" height="116" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="32" cy="32" r="24" stroke="#E6A93C" stroke-width="4.2"/>
-    <path d="M12.5 19.5C22.5 22 31.2 29 37.5 41C40 45.8 41.2 51 40.8 55.2" stroke="#E6A93C" stroke-width="3.6" stroke-linecap="round"/>
-    <path d="M51.5 19.5C41.5 21.2 32.5 26 25.8 34.8C21.5 40.4 18.8 46.8 18 52.2" stroke="#E6A93C" stroke-width="3.6" stroke-linecap="round"/>
-    <path d="M20.5 11.5C28.8 15.5 36.8 17.2 45.5 16.5C49 16.2 52 15.5 54.2 14.5" stroke="#E6A93C" stroke-width="3.6" stroke-linecap="round"/>
-  </svg>
+  <img src="${logoDataUri}" width="132" height="132" alt="" style="display:block;object-fit:contain;">
 </body>
 </html>`;
 

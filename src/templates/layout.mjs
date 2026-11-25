@@ -15,12 +15,7 @@ export function escapeHtml(str) {
 export function renderBrandLockup(site, { asLink = true } = {}) {
   const inner = `
     <span class="brand-mark" aria-hidden="true">
-      <svg width="20" height="20" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="32" cy="32" r="24" stroke="#E6A93C" stroke-width="4.2"/>
-        <path d="M12.5 19.5C22.5 22 31.2 29 37.5 41C40 45.8 41.2 51 40.8 55.2" stroke="#E6A93C" stroke-width="3.6" stroke-linecap="round"/>
-        <path d="M51.5 19.5C41.5 21.2 32.5 26 25.8 34.8C21.5 40.4 18.8 46.8 18 52.2" stroke="#E6A93C" stroke-width="3.6" stroke-linecap="round"/>
-        <path d="M20.5 11.5C28.8 15.5 36.8 17.2 45.5 16.5C49 16.2 52 15.5 54.2 14.5" stroke="#E6A93C" stroke-width="3.6" stroke-linecap="round"/>
-      </svg>
+      <img src="/assets/logo.png" alt="" width="24" height="24" class="brand-mark-img">
     </span>
     <span class="brand-text">
       <span class="brand-wordmark">Sydney<span>Volleyball</span></span>
@@ -172,6 +167,7 @@ export function renderPage({
 
   <!-- Icons & Manifest -->
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="384x384" href="/assets/logo.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 

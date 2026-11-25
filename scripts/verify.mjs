@@ -26,7 +26,8 @@ for (const reqFile of [
   'apple-touch-icon.png',
   'assets/styles.css',
   'assets/app.js',
-  'assets/favicon.svg'
+  'assets/favicon.svg',
+  'assets/logo.png'
 ]) {
   check(fs.existsSync(path.join(DIST, reqFile)), `Missing required file: dist/${reqFile}`);
 }
